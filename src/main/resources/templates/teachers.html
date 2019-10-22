@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Преподаватели</h2>
+<form action="/addTeachers" method="post">
+    <input type="text" name="name" placeholder="Введите преподавателя">
+    <button type="submit">Добавить</button>
+</form>
+<table>
+    <tbody>
+    <tr th:each="teacher: ${teacherList}">
+        <td th:text="${teacher.getId()}"></td>
+        <td th:text="${teacher.getName()}"></td>
+        <td><form action="deleteTeacher" method="post">
+            <input type="hidden" name="id" th:value="${teacher.getId()}"/>
+            <button type="submit">Удалить</button>
+        </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

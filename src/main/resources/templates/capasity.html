@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Нагрузка</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h2>Нагрузка</h2>
+<form action="/addCapasity" method="post">
+    <input type="text" name="grp" placeholder="Группа"/>
+    <input type="text" name="teacher" placeholder="Преподаватель"/>
+    <input type="text" name="subject" placeholder="Предмет"/>
+    <input type="text" name="po_uch_pl" placeholder="По уч. плану"/>
+    <button type="submit">Добавить</button>
+</form>
+<table class="table my-2 mx-2">
+    <thead class="thead-dark">
+    <tr>
+        <th>id</th>
+        <th>Группа</th>
+        <th>Преподаватель</th>
+        <th>Предмет</th>
+        <th>По учебному плану</th>
+        <th>С учетом снятия</th>
+        <th>Теоретического обучения</th>
+        <th>Практические работы</th>
+        <th>Лабораторные работы</th>
+        <th>Курсовой проект</th>
+        <th>Прием курсового проекта</th>
+        <th>Прием экзаменов</th>
+        <th>Консультации 1 сем</th>
+        <th>Консультации 2 сем</th>
+        <th>Проверка ДКР 1 сем</th>
+        <th>Проверка ДКР 2 сем</th>
+        <th>Количество ОКР</th>
+        <th>Недельная нагрузка 1 сем</th>
+        <th>Общая нагрузка 1 сем</th>
+        <th>Недельная нагрузка 2 сем</th>
+        <th>Общая нагрузка 2 сем</th>
+        <th>Всего часов за год</th>
+        <th>Итоговая аттестация</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="capasity: ${listCapasity}">
+        <td th:text="${capasity.getId()}"/>
+        <td th:text="${capasity.getGrp().getName()}"/>
+        <td th:text="${capasity.getTeacher().getName()}"/>
+        <td th:text="${capasity.getSubject().getName()}"/>
+        <td th:text="${capasity.getPo_uch_pl()}"/>
+        <td th:text="${capasity.getS_uchetom_sn()}"/>
+        <td th:text="${capasity.getTeor_obuch()}"/>
+        <td th:text="${capasity.getPrakt_obuch()}"/>
+        <td th:text="${capasity.getLab_rab()}"/>
+        <td th:text="${capasity.getKurs_pr()}"/>
+        <td th:text="${capasity.getPriem_kurs_pr()}"/>
+        <td th:text="${capasity.getKons_1sem()}"/>
+        <td th:text="${capasity.getKons_2sem()}"/>
+        <td th:text="${capasity.getProv_DKR_1sem()}"/>
+        <td th:text="${capasity.getProv_DKR_2sem()}"/>
+        <td th:text="${capasity.getKol_OKR()}"/>
+        <td th:text="${capasity.getNed_nagr_1sem()}"/>
+        <td th:text="${capasity.getObch_nagr_1sem()}"/>
+        <td th:text="${capasity.getNed_nagr_2sem()}"/>
+        <td th:text="${capasity.getObch_nagr_2sem()}"/>
+        <td th:text="${capasity.getVsego_ch_na_god()}"/>
+        <td th:text="${capasity.getItog_at()}"/>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
