@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <style>
+        select{
+            width: 200px;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>Нагрузка</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/chosen.jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/chosen.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
 </head>
 <body>
 <h2>Нагрузка</h2>
 <form action="/addCapasity" method="post">
     <input type="text" name="grp" placeholder="Группа"/>
-    <input type="text" name="teacher" placeholder="Преподаватель"/>
+    <select class="chosen" name="teacher" >
+        <option th:each="teacher: ${listTeacher}"  th:value="${teacher.getId()}"><p th:text="${teacher.getName()}"/></option>
+    </select>
     <input type="text" name="subject" placeholder="Предмет"/>
     <input type="text" name="po_uch_pl" placeholder="По уч. плану"/>
     <button type="submit">Добавить</button>
@@ -70,4 +84,7 @@
     </tbody>
 </table>
 </body>
+<script type="text/javascript">
+    $(".chosen").chosen();
+</script>
 </html>

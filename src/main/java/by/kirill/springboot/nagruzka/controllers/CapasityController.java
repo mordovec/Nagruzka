@@ -33,7 +33,9 @@ public class CapasityController {
     @GetMapping("/capasity")
     public String showCapasity(Model model){
         Iterable<Capasity> listCapasity = capasityRepo.findAll();
+        Iterable<Teacher> listTeacher = teacherRepo.findAll();
         model.addAttribute("listCapasity", listCapasity);
+        model.addAttribute("listTeacher", listTeacher);
         return "capasity";
     }
     @PostMapping("/addCapasity")
