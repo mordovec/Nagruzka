@@ -10,6 +10,7 @@
     <title>Нагрузка</title>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/liveSearch.js"></script>
     <link rel="stylesheet" href="/css/jquery-ui.css">
     <script src="/js/chosen.jquery.min.js"></script>
     <link rel="stylesheet" href="/css/chosen.min.css">
@@ -28,10 +29,10 @@
     <input type="text" name="po_uch_pl" placeholder="По уч. плану"/>
     <button type="submit">Добавить</button>
 </form>
-<table class="table my-2 mx-2">
+<input type="text" id="myInput" onkeyup="liveSearch()" placeholder="Поиск по группе.." title="Группа">
+<table class="table my-2 mx-2" id="myTable">
     <thead class="thead-dark">
     <tr>
-        <th>id</th>
         <th>Группа</th>
         <th>Преподаватель</th>
         <th>Предмет</th>
@@ -58,7 +59,6 @@
     </thead>
     <tbody>
     <tr th:each="capasity: ${listCapasity}">
-        <td th:text="${capasity.getId()}"/>
         <td th:text="${capasity.getGrp().getName()}"/>
         <td th:text="${capasity.getTeacher().getName()}"/>
         <td th:text="${capasity.getSubject().getName()}"/>
